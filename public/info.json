@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Orange",
+    "price": 1.5,
+    "rating": 4.5,
+    "category": "Citrus Fruits",
+    "description": "Oranges are juicy citrus fruits believed to have originated in Southeast Asia. They are known for their bright orange color and tangy-sweet flavor. Oranges are rich in vitamin C, antioxidants, and fiber, making them a nutritious addition to any diet. They are commonly used in juices, salads, desserts, and as a snack. Oranges are also widely cultivated in regions with warm climates such as Florida, Spain, and Brazil.",
+    "image": "orange.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Strawberry",
+    "price": 3.0,
+    "rating": 4.8,
+    "category": "Berries",
+    "description": "Strawberries are sweet, red berries believed to have originated in Europe and North America. They are prized for their juicy texture and vibrant flavor. Strawberries are rich in antioxidants, vitamins, and minerals, making them a nutritious addition to any diet. They are commonly used in jams, pies, smoothies, salads, and desserts. Strawberries thrive in temperate climates and are cultivated in countries such as the United States, Mexico, and Spain.",
+    "image": "strawberry.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Peach",
+    "price": 2.0,
+    "rating": 4.4,
+    "category": "Drupes or Stone Fruits",
+    "description": "Peaches are fuzzy stone fruits believed to have originated in China. They are prized for their sweet, juicy flesh and delicate aroma. Peaches are rich in vitamins, minerals, and antioxidants, making them a nutritious snack. They are commonly used in pies, cobblers, jams, preserves, and desserts. Peaches are cultivated in warm temperate regions, including the United States, Spain, and Italy.",
+    "image": "peach.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Mango",
+    "price": 2.5,
+    "rating": 4.6,
+    "category": "Tropical Fruits",
+    "description": "Mangoes are tropical stone fruits believed to have originated in South Asia, specifically India and Burma. They are prized for their sweet, juicy flesh and distinctive flavor. Mangoes are rich in vitamins, minerals, and antioxidants, making them a nutritious addition to any diet. They are commonly used in smoothies, salsa, chutney, salads, and desserts. Mangoes are grown in tropical regions worldwide, including India, Thailand, and the Philippines.",
+    "image": "mango.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Apple",
+    "price": 1.0,
+    "rating": 4.7,
+    "category": "Pome Fruits",
+    "description": "Apples are crisp, juicy fruits believed to have originated in Central Asia, specifically Kazakhstan. They come in a variety of colors, including red, green, and yellow. Apples are rich in vitamins, minerals, and antioxidants, making them a nutritious snack. They are commonly used in pies, sauces, salads, cider, and desserts. Apples are cultivated in temperate regions worldwide, including the United States, China, and Europe.",
+    "image": "apple.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Watermelon",
+    "price": 4.0,
+    "rating": 4.9,
+    "category": "Melons",
+    "description": "Watermelons are large, juicy melons believed to have originated in West Africa. They have a hard, green rind and sweet, red flesh with black seeds. Watermelons are rich in vitamins, minerals, and antioxidants, making them a refreshing and hydrating snack. They are commonly enjoyed fresh, in fruit salads, smoothies, cocktails, and desserts. Watermelons are cultivated in tropical and subtropical regions worldwide, including the United States, China, and Brazil.",
+    "image": "watermelon.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Lemon",
+    "price": 1.2,
+    "rating": 4.3,
+    "category": "Citrus Fruits",
+    "description": "Lemons are tart citrus fruits native to Asia, specifically India and China. They are prized for their acidic juice and bright yellow peel, which are used in a variety of culinary applications. Lemons are rich in vitamin C and are known for their cleansing and detoxifying properties. They add a refreshing zest to dishes and beverages, including lemonade, salads, sauces, and desserts. Lemons are also grown in Mediterranean countries such as Italy, Spain, and Greece.",
+    "image": "lemon.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Blueberry",
+    "price": 2.5,
+    "rating": 4.6,
+    "category": "Berries",
+    "description": "Blueberries are small, round berries native to North America. They are known for their deep blue color and sweet-tart flavor. Blueberries are packed with antioxidants, vitamins, and fiber, making them a superfood for health-conscious individuals. They are commonly used in muffins, pancakes, yogurt, salads, and desserts. Blueberries are cultivated in regions with acidic soil, including the United States, Canada, and Chile.",
+    "image": "blueberry.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Plum",
+    "price": 1.8,
+    "rating": 4.2,
+    "category": "Drupes or Stone Fruits",
+    "description": "Plums are juicy stone fruits believed to have originated in China. They come in a variety of colors, including red, purple, yellow, and green. Plums are rich in vitamins, minerals, and antioxidants, making them a healthy addition to any diet. They are commonly used in jams, jellies, sauces, salads, and desserts. Plums are cultivated in countries with temperate climates, such as the United States, Japan, and Spain.",
+    "image": "plum.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Pineapple",
+    "price": 3.2,
+    "rating": 4.7,
+    "category": "Tropical Fruits",
+    "description": "Pineapples are tropical fruits native to South America, specifically Brazil and Paraguay. They are prized for their sweet, tangy flavor and juicy texture. Pineapples are rich in vitamins, minerals, and enzymes, making them a nutritious and refreshing snack. They are commonly used in fruit salads, smoothies, cocktails, desserts, and savory dishes. Pineapples are cultivated in tropical regions worldwide, including Hawaii, Costa Rica, and the Philippines.",
+    "image": "pineapple.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Pear",
+    "price": 1.5,
+    "rating": 4.5,
+    "category": "Pome Fruits",
+    "description": "Pears are sweet, juicy fruits believed to have originated in Europe and Asia. They come in a variety of shapes, sizes, and colors, including green, red, and yellow. Pears are rich in vitamins, minerals, and fiber, making them a healthy addition to any diet. They are commonly used in salads, preserves, sauces, desserts, and beverages. Pears are cultivated in temperate regions worldwide, including the United States, China, and Argentina.",
+    "image": "pear.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Cantaloupe",
+    "price": 2.8,
+    "rating": 4.6,
+    "category": "Melons",
+    "description": "Cantaloupes, also known as muskmelons, are sweet, aromatic melons believed to have originated in ancient Persia. They have a rough, netted skin and sweet, juicy flesh with a distinct musky aroma. Cantaloupes are rich in vitamins, minerals, and antioxidants, making them a refreshing and nutritious snack. They are commonly enjoyed fresh, in fruit salads, smoothies, and desserts. Cantaloupes are cultivated in warm climates worldwide, including the United States, Mexico, and Spain.",
+    "image": "cantaloupe.jpg"
+  }
+]
