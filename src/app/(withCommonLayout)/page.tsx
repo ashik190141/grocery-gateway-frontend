@@ -4,6 +4,7 @@ import Banner from '../../components/shared/Banner';
 import Trending from '../../components/HomePage/Trending/Trending';
 import TopCategory from '../../components/HomePage/TopCategory/TopCategory';
 
+
 const HomePage = () => {
     return (
         <div>

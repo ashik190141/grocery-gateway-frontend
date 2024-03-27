@@ -1,22 +1,32 @@
-"use client"
-
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/material";
+"use client";
+import { useState, useEffect } from 'react';
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
-const FlashSale = async () => {
-  const res = await fetch(`http://localhost:5000/api/v1/flash-Sale`, {
-    next: {
-      revalidate: 30,
-    },
-  });
-    const { data: products } = await res.json();
+const FlashSale = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://grocery-store-backend-six.vercel.app/api/v1/flash-Sale`,
+          {
+            next: {
+              revalidate: 30,
+            },
+          }
+        );
+        const { data } = await res.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <Box
       sx={{

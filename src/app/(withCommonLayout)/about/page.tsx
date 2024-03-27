@@ -1,37 +1,160 @@
+import { FaCheckCircle } from "react-icons/fa";
+import Link from "next/link";
+import Image from "next/image";
+
 const AboutPage = () => {
   return (
-    <div className="pt-32 max-w-7xl mx-auto">
-      <header className="bg-green-500 text-white py-4">
-        <div className="container mx-auto px-4">
-            <h1 className="text-2xl font-bold">About Us</h1>
-        </div>
-    </header>
-    <main className="container mx-auto px-4 py-8">
-        <section className="mb-8">
-            <h2 className="text-xl font-bold mb-4">Welcome to Grocery Gateway!</h2>
-            <p className="mb-4">
-                At Grocery Gateway, we're passionate about providing fresh and high-quality groceries to our customers. Our mission is to make grocery shopping convenient and enjoyable for everyone. We strive to offer a wide selection of products, excellent customer service, and seamless delivery options.
+    <div className="font-play py-28">
+      <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-10">
+        {/* grid-1 */}
+        <div>
+          <div className="bg-[#2d4739] my-5 w-[110px] rounded-2xl bg-opacity-55">
+            <p className="text-sm font-semibold text-center text-[#2d4739] p-2 ">
+              Who We Are
             </p>
-            <p className="mb-4">
-                Founded in 1997, Grocery Gateway has become a trusted name in online grocery shopping in Canada. With over 20 years of experience in the industry, our team is dedicated to delivering excellence in every aspect of our service.
+          </div>
+          <div className="my-3">
+            <p className="text-4xl lg:w-[450px]  font-semibold">
+              Fresh Products Directly To Your Door With Free Delivery
             </p>
+          </div>
+
+          <div className="w-[450px] text-[#2d4739]">
             <p>
-                At Grocery Gateway, we believe in providing our customers with the best shopping experience possible. We are committed to offering fresh products, competitive prices, and reliable delivery services. Our goal is to make grocery shopping hassle-free and enjoyable for our customers.
+              When an unknown printer took a galley of type and scrambled it to
+              make type specimen book. It has survived not only five centuries,
+              but also the leap types remaining essentially unchangedIt was
+              popularised.
             </p>
-        </section>
-        <section>
-            <h2 className="text-xl font-bold mb-4">Join Us</h2>
-            <p className="mb-4">
-                Join the Grocery Gateway community today and experience the convenience of online grocery shopping. Whether you're a busy professional, a parent on the go, or anyone in between, Grocery Gateway has something for everyone!
+          </div>
+
+          <div className="my-4 space-y-1">
+            <div className="flex items-center gap-2">
+              <FaCheckCircle className="text-[#D7A747]" />
+              <p className="font-semibold">
+                Rredibly innovate granular internal
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaCheckCircle className="text-[#D7A747]" />
+              <p className="font-semibold">
+                Grantedly underconstructions reloaded
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaCheckCircle className="text-[#D7A747]" />
+              <p className="font-semibold">Completely synergize resource</p>
+            </div>
+          </div>
+
+          <div className="my-5 ">
+            <Link
+              href="/contactUsPage"
+              className="btn btn-outline border-[#09814A] text-xl hover:bg-[#2D4739] w-[200px]"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+
+        {/* grid-2 */}
+        <div>
+          <div className="flex flex-col lg:flex-row items-end justify-center gap-5">
+            <Image
+              src={
+                "https://i.ibb.co/s3WRhYS/boxed-water-is-better-7-H1h-Dt694s8-unsplash.jpg"
+              }
+              alt=""
+              width={400}
+              height={400}
+              // layout="fill"
+            />
+            <Image
+              src={"https://i.ibb.co/znMn6SK/liuba-bilyk-jz-C-PQ4c7y-M.jpg"}
+              alt=""
+              width={400}
+              height={400}
+              // layout="fill"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Team */}
+      <div>
+        <div className="flex flex-col my-10 items-center justify-center">
+          <div className="bg-[#2d4739] my-5 w-[110px] rounded-2xl bg-opacity-55">
+            <p className="text-sm font-semibold text-center text-[#2d4739] p-2 ">
+              Our Members
             </p>
-        </section>
-    </main>
-    <footer className="bg-green-500 text-white py-4 text-center">
-        <p>Sincerely,</p>
-        <p>John Smith<br/>Founder, Grocery Gateway</p>
-    </footer>
+          </div>
+
+          <div className="flex flex-col items-center space-y-4 justify-center">
+            <p className="text-4xl font-bold">From The Community</p>
+            <p className="text-center">
+              When an unknown printer took a galley of type and scrambled make{" "}
+              <br />
+              specimen book It has survived five centuries.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-4 gap-2">
+          <div className="space-y-2">
+            <Image
+              src={
+                "https://i.ibb.co/bWdzTKt/dollar-gill-Xj-CZ9p-EBJAk-unsplash.jpg"
+              }
+              alt=""
+              width={600}
+              height={600}
+              // layout="fill"
+            />
+            <p className="font-bold text-xl">Albert Forse</p>
+            <p className="text-sm">Manager</p>
+          </div>
+          <div className="space-y-2">
+            <Image
+              src={
+                "https://i.ibb.co/0n7DXxm/gursimrat-ganda-GMAOwvn-EPLU-unsplash.jpg"
+              }
+              alt=""
+              width={600}
+              height={600}
+              // layout="fill"
+            />
+            <p className="font-bold text-xl">Albert Forse</p>
+            <p className="text-sm">Manager</p>
+          </div>
+          <div className="space-y-2">
+            <Image
+              src={
+                "https://i.ibb.co/zPfbWnV/roman-holoschchuk-I2-SU6d-CGsn-I-unsplash.jpg"
+              }
+              alt=""
+              width={600}
+              height={600}
+              // layout="fill"
+            />
+            <p className="font-bold text-xl">Albert Forse</p>
+            <p className="text-sm">Manager</p>
+          </div>
+          <div className="space-y-2">
+            <Image
+              src={
+                "https://i.ibb.co/wYr9LLJ/jurica-koletic-7-YVZYZe-ITc8-unsplash.jpg"
+              }
+              alt=""
+              width={600}
+              height={600}
+              // layout="fill"
+            />
+            <p className="font-bold text-xl">Albert Forse</p>
+            <p className="text-sm">Manager</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
-
 export default AboutPage;

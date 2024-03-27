@@ -10,7 +10,8 @@ const columns: GridColDef[] = [
 
 const AllProductPage = async () => {
     const res = await fetch(
-      `${process.env.URL}/product`,{
+      `https://grocery-store-backend-six.vercel.app/api/v1/product`,
+      {
         cache: "no-store",
       }
     );

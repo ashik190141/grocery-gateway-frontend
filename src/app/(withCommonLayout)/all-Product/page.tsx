@@ -4,9 +4,9 @@ import React, { Key } from "react";
 import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import Image from 'next/image';
+import Image from "next/image";
 import LoadingPage from "@/app/loading";
-import Link from 'next/link';
+import Link from "next/link";
 
 const AllProductHomePage = () => {
   const [show, setShow] = useState(true);
@@ -14,7 +14,7 @@ const AllProductHomePage = () => {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/product`)
+    fetch(`https://grocery-store-backend-six.vercel.app/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -25,7 +25,7 @@ const AllProductHomePage = () => {
   }, []);
 
   const handleSearch = (e: any) => {
-    let searchText = (e.target.value).toLowerCase();
+    let searchText = e.target.value.toLowerCase();
     // console.log(searchText)
     setRecords(
       products.filter(
@@ -42,7 +42,6 @@ const AllProductHomePage = () => {
       )
     );
   };
-
 
   return (
     <div className="max-w-7xl mx-auto">

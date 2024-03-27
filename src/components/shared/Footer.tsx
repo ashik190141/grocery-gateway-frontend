@@ -28,13 +28,16 @@ const Footer = () => {
                     Categories/Brands
                   </Link>
                   <Link href="/about" className="hover:underline">
-                    About Us
+                    About us
+                  </Link>
+                  <Link href="/contact" className="hover:underline">
+                    Contact us
                   </Link>
                 </div>
               </div>
             </div>
 
-            <div className="border bg-[#BCB382] bg-opacity-80 border-dashed rounded-full h-[300px] flex flex-col items-center justify-center p-8 border-[#D7A747]">
+            <div className="border bg-[#BCB382] bg-opacity-60 border-dashed rounded-full h-[350px] w-[350px] flex flex-col items-center justify-center p-8 border-[#D7A747]">
               <div className="flex items-center justify-center gap-1">
                 <div>
                   <Image

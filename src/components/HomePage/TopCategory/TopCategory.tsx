@@ -8,6 +8,17 @@ import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import Link from "next/link";
+import { useState, useEffect } from 'react';
+
+interface Product {
+  _id: string;
+  category: string;
+  image: string;
+  name: string;
+  price: number;
+}
+
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -17,13 +28,29 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const TopCategory = async () => {
-  const res = await fetch(`http://localhost:5000/api/v1/topCategory`, {
-    next: {
-      revalidate: 30,
-    },
-  });
-  const { data: products } = await res.json();
+const TopCategory = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://grocery-store-backend-six.vercel.app/api/v1/topCategory`,
+          {
+            next: {
+              revalidate: 30,
+            },
+          }
+        );
+        const { data } = await res.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   // console.log(products);
   return (
     <div className="max-w-7xl mx-auto">
@@ -62,8 +89,7 @@ const TopCategory = async () => {
                     >
                       <p className="text-black font-black text-3xl">
                         {products[0]?.name}
-                        <br/>
-                        $ {products[0]?.price}
+                        <br />$ {products[0]?.price}
                       </p>
                     </div>
                   </div>
@@ -95,8 +121,7 @@ const TopCategory = async () => {
                     >
                       <p className="text-black font-black text-3xl">
                         {products[2]?.name}
-                        <br/>
-                        $ {products[2]?.price}
+                        <br />$ {products[2]?.price}
                       </p>
                     </div>
                   </div>
@@ -128,8 +153,7 @@ const TopCategory = async () => {
                     >
                       <p className="text-black font-black text-3xl">
                         {products[1]?.name}
-                        <br/>
-                        $ {products[1]?.price}
+                        <br />$ {products[1]?.price}
                       </p>
                     </div>
                   </div>
@@ -161,8 +185,7 @@ const TopCategory = async () => {
                     >
                       <p className="text-black font-black text-3xl">
                         {products[5]?.name}
-                        <br />
-                        $ {products[5]?.price}
+                        <br />$ {products[5]?.price}
                       </p>
                     </div>
                   </div>
