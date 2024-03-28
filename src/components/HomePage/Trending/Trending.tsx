@@ -51,7 +51,7 @@ const Trending = () => {
     <div className="max-w-7xl mx-auto pt-20">
       <Box sx={{ textAlign: "center", py: 5 }}>
         <Typography variant="h4" component="h1" fontWeight={700}>
-          Hot Picks: Top Trending Products You Can't Miss
+          Hot Picks: Top Trending Products You Can&apos;t Miss
         </Typography>
         <Typography component="p" fontSize={18} fontWeight={400} sx={{ mt: 2 }}>
           Discover the hottest picks in town with our top trending products!
@@ -63,7 +63,7 @@ const Trending = () => {
       </Box>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {products.map((product:Product, index:number) => (
+          {products.map((product: Product, index: number) => (
             <Grid item xs={4} key={index}>
               <Item>
                 <div className="py-3 shadow-lg font-sans rounded-xl space-y-6 mx-auto bg-white">
@@ -79,7 +79,7 @@ const Trending = () => {
                       alt="product"
                       width={400}
                       height={400}
-                      className = "h-[300px]"
+                      className="h-[300px]"
                     />
                   </div>
                 </div>

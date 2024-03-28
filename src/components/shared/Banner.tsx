@@ -36,7 +36,7 @@ const Banner = () => {
        6000
      );
      return () => clearInterval(intervalId);
-   }, [currentSlider]);
+   }, [currentSlider, sliders.length]);
   return (
     <>
       <div

@@ -38,7 +38,7 @@ const FlashSalePage = async () => {
     <Box>
       <Box sx={{ textAlign: "center", pt: 10 }}>
         <Typography component="p" fontSize={22} fontWeight={400} sx={{ mt: 2 }}>
-          Don't miss out on our Super Spring Flash Sale!
+          Do not miss out on our Super Spring Flash Sale!
         </Typography>
         <Typography component="p" fontSize={20} fontWeight={400}>
           Get ready to indulge in amazing deals on a wide range of products.

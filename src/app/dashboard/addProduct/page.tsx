@@ -19,7 +19,7 @@ export type FormValues = {
 const image_hosting_token = process.env.VITE_Image_Upload_token;
 // console.log(image_hosting_token);
 
-const AddProductPage = async () => {
+const AddProductPage = () => {
   const [category, setCategory] = useState([]);
   const [show, setShow] = useState(false);
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=d0a7e1f328b83330a0ea0321f368cb7f`;
@@ -104,7 +104,7 @@ const AddProductPage = async () => {
                   {...register("category", { required: true })}
                 >
                   {category?.map((category: { id: string; name: string }) => (
-                    <option value={category.name}>{category.name}</option>
+                    <option key={category.id} value={category.name}>{category.name}</option>
                   ))}
                 </select>
               </div>

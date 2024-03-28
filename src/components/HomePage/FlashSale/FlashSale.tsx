@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +41,7 @@ const FlashSale = () => {
           Super Spring Flash Sale - Grab Your Favorites Now!
         </Typography>
         <Typography component="p" fontSize={18} fontWeight={400} sx={{ mt: 2 }}>
-          Don't miss out on our Super Spring Flash Sale!
+          Do not miss out on our Super Spring Flash Sale!
         </Typography>
         <Typography component="p" fontSize={18} fontWeight={400}>
           Get ready to indulge in amazing deals on a wide range of products.

@@ -44,7 +44,7 @@ const Navbar = () => {
       <li>
         <Typography
           component={Link}
-          href="dashboard"
+          href="dashboard/allProduct"
           sx={{
             fontSize: "20px",
           }}

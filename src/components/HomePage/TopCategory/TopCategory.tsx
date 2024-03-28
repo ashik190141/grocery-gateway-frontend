@@ -59,7 +59,7 @@ const TopCategory = () => {
           Explore the Exquisite World of Exotic Fruits
         </Typography>
         <Typography component="p" fontSize={18} fontWeight={400} sx={{ mt: 2 }}>
-          From Tropical Delights to Rare Finds, Uncover Nature's Finest Bounty
+          From Tropical Delights to Rare Finds, Uncover Nature Finest Bounty
           with Our Diverse Selection
         </Typography>
       </Box>
