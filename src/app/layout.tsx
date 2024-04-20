@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import Providers from '../lib/Providers';
 
 const roboto = Roboto({
   weight: "400",
@@ -11,7 +12,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Grocer Gateway",
   description:
-    "Welcome to Blogiz – where innovation meets imagination in the dynamic realm of technology, offering a thrilling journey through the latest trends and groundbreaking discoveries in the world of tech!",
+    "Welcome to Grocery Gateway – where innovation meets imagination in the dynamic realm of technology, offering a thrilling journey through the latest trends and groundbreaking discoveries in the world of tech!",
 };
 
 export default function RootLayout({
@@ -20,10 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body className={roboto.className}>
-        {children}
-      </body>
-    </html>
+    <Providers>
+      <html lang="en" data-theme="light">
+        <body className={roboto.className}>
+          {children}
+        </body>
+      </html>
+    </Providers>
   );
 }

@@ -58,17 +58,23 @@ const AddProductPage = () => {
                     // id: (products.length)+1
                 }
                 try {
-                    const res = await CreateProduct(productDetails);
+                  const res = await CreateProduct(productDetails);
                   if (res.result) {
                       Swal.fire({
                         title: "Add Your Product Successfully",
-                        confirmButtonText: "Save",
+                        confirmButtonText: "Ok",
                       }).then((result) => {
                         if (result.isConfirmed) {
                           router.push('/dashboard/allProduct');
                         }
                       });
-                    }
+                  }
+                  else {
+                    Swal.fire({
+                      title: "Failed",
+                      confirmButtonText: "Ok",
+                    });
+                  }
                 } catch (err:any) {
                     throw new Error(err.message);
                 }

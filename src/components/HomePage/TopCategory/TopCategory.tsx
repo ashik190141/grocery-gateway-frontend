@@ -8,7 +8,7 @@ import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import Link from "next/link";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface Product {
   _id: string;
@@ -17,8 +17,6 @@ interface Product {
   name: string;
   price: number;
 }
-
-
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -34,14 +32,11 @@ const TopCategory = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(
-          `https://grocery-store-backend-six.vercel.app/api/v1/topCategory`,
-          {
-            next: {
-              revalidate: 30,
-            },
-          }
-        );
+        const res = await fetch(`http://localhost:5000/api/v1/topCategory`, {
+          next: {
+            revalidate: 30,
+          },
+        });
         const { data } = await res.json();
         setProducts(data);
       } catch (error) {

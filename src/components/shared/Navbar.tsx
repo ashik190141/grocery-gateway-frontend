@@ -1,13 +1,35 @@
-import { Typography } from "@mui/material";
+"use client"
+
+import { loggedInUserInfo } from "@/util/localStorage";
+import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import img1 from '../../assets/156-1563403_pomegranate-grocery-store-pomegranate-logo-removebg-preview.png'
+import { deleteKeyFromLocalStorage } from '../../util/localStorage';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useGetAllCartsQuery } from "@/redux/api/cartApi";
 
 
 const Navbar = () => {
+  const [userRole, setUserRole] = useState(null);
+  const [user, setUser] = useState(null);
+  const { data: carts, isLoading } = useGetAllCartsQuery(user);
+  // console.log(carts);
+  
+  useEffect(() => {
+    const userInfo = loggedInUserInfo();
+    setUserRole(userInfo?.role);
+    setUser(userInfo?.email);
+  }, [userRole]);
+
+  const handleLogOut = () => {
+    setUserRole(null);
+    deleteKeyFromLocalStorage();
+  }
 
   const navOptions = (
-    <>
+    <Stack direction="row" alignItems="center" justifyContent="center">
       <li>
         <Typography
           component={Link}
@@ -44,7 +66,7 @@ const Navbar = () => {
       <li>
         <Typography
           component={Link}
-          href="dashboard/allProduct"
+          href="/dashboard/allProduct"
           sx={{
             fontSize: "20px",
           }}
@@ -52,7 +74,43 @@ const Navbar = () => {
           Dashboard
         </Typography>
       </li>
-    </>
+      <li>
+        <Typography
+          sx={{
+            fontSize: "20px",
+          }}
+        >
+          <button className="btn">
+            <AddShoppingCartIcon></AddShoppingCartIcon>
+            <div className="badge badge-secondary">{carts?.data?.length || 0}</div>
+          </button>
+        </Typography>
+      </li>
+      <li>
+        {!userRole && (
+          <Typography
+            component={Link}
+            href="/login"
+            sx={{
+              fontSize: "20px",
+            }}
+          >
+            <button className="btn btn-success">Login</button>
+          </Typography>
+        )}
+        {userRole && (
+          <Typography
+            sx={{
+              fontSize: "20px",
+            }}
+          >
+            <button onClick={handleLogOut} className="btn btn-error">
+              Logout
+            </button>
+          </Typography>
+        )}
+      </li>
+    </Stack>
   );
 
   return (

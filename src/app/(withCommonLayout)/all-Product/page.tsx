@@ -7,14 +7,27 @@ import "@smastrom/react-rating/style.css";
 import Image from "next/image";
 import LoadingPage from "@/app/loading";
 import Link from "next/link";
+import { loggedInUserInfo } from "@/util/localStorage";
+import { useRouter } from "next/navigation";
+import { useAddToCartProductMutation } from "@/redux/api/cartApi";
+import Swal from "sweetalert2";
 
 const AllProductHomePage = () => {
   const [show, setShow] = useState(true);
   const [products, setProducts] = useState([]);
   const [records, setRecords] = useState([]);
+  const router = useRouter();
+
+  const [user, setUser] = useState(null);
+  const [addToCart] = useAddToCartProductMutation();
 
   useEffect(() => {
-    fetch(`https://grocery-store-backend-six.vercel.app/api/v1/product`)
+    const userInfo = loggedInUserInfo();
+    setUser(userInfo?.email);
+  }, [user]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -43,9 +56,29 @@ const AllProductHomePage = () => {
     );
   };
 
+  const handleAddToCart = async(id:Key) => {
+    const data = {id:id,email:user}
+    if(!user){
+      router.push("/login");
+    } else {
+      const res = await addToCart(data).unwrap();
+      if (res?.result) {
+        Swal.fire({
+          title: "Cart Added Successfully",
+          confirmButtonText: "OK",
+        })
+      } else {
+        Swal.fire({
+          title: "Failed",
+          confirmButtonText: "Ok",
+        });
+      }
+    }
+  }
+
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="flex items-center justify-center pt-20">
+      <div className="flex items-center justify-center pt-24">
         <div className="join w-1/2">
           <input
             onChange={handleSearch}
@@ -102,6 +135,7 @@ const AllProductHomePage = () => {
                     <h2 className="md:text-xl text-gray-800">
                       $ {product.price}
                     </h2>
+                    <button onClick={()=>handleAddToCart(product._id)} className="bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900">Add To Cart</button>
                     <Link href={`/all-Product/${product._id}`}>
                       <button className="bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900">
                         Details
