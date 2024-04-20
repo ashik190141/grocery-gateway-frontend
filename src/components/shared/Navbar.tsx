@@ -76,13 +76,17 @@ const Navbar = () => {
       </li>
       <li>
         <Typography
+          component={Link}
+          href="/checkout"
           sx={{
             fontSize: "20px",
           }}
         >
           <button className="btn">
             <AddShoppingCartIcon></AddShoppingCartIcon>
-            <div className="badge badge-secondary">{carts?.data?.length || 0}</div>
+            <div className="badge badge-secondary">
+              {carts?.data?.length || 0}
+            </div>
           </button>
         </Typography>
       </li>

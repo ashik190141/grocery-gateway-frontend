@@ -1,5 +1,9 @@
 "use client"
 
+import { loggedInUserInfo } from "@/util/localStorage";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import React, { ReactNode } from "react";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -22,7 +26,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import GradingIcon from "@mui/icons-material/Grading";
+import ListAltIcon from "@mui/icons-material/ListAlt";
 
 const drawerWidth = 240;
 
@@ -97,7 +102,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const DashBoardLayout = ({ children }: { children: ReactNode }) => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userInfo = loggedInUserInfo();
+    setUser(userInfo?.email);
+  }, [user]);
+
+  const router = useRouter();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -107,8 +120,12 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
     setOpen(false);
   };
 
+  if(user==null){
+      router.push("/login")
+  }
+
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -119,7 +136,7 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
             edge="start"
             sx={{
               marginRight: 5,
-              ...(open && { display: 'none' }),
+              ...(open && { display: "none" }),
             }}
           >
             <MenuIcon />
@@ -132,20 +149,20 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
           <ListItem disablePadding>
             <ListItemButton component={Link} href="/">
-              <ListItemIcon>
-                {<InboxIcon/>}
-              </ListItemIcon>
+              <ListItemIcon>{<InboxIcon />}</ListItemIcon>
               <ListItemText>
-                <Typography>
-                  Home
-                </Typography>
+                <Typography>Home</Typography>
               </ListItemText>
             </ListItemButton>
           </ListItem>
@@ -154,25 +171,33 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
         <List>
           <ListItem disablePadding>
             <ListItemButton component={Link} href="/dashboard/allProduct">
-              <ListItemIcon>
-                {<FormatAlignJustifyIcon/>}
-              </ListItemIcon>
+              <ListItemIcon>{<FormatAlignJustifyIcon />}</ListItemIcon>
               <ListItemText>
-                <Typography>
-                  All Product
-                </Typography>
+                <Typography>All Product</Typography>
               </ListItemText>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton component={Link} href="/dashboard/addProduct">
-              <ListItemIcon>
-                {<PostAddIcon/>}
-              </ListItemIcon>
+              <ListItemIcon>{<PostAddIcon />}</ListItemIcon>
               <ListItemText>
-                <Typography>
-                  Add Product
-                </Typography>
+                <Typography>Add Product</Typography>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} href="/dashboard/my-orders">
+              <ListItemIcon>{<GradingIcon />}</ListItemIcon>
+              <ListItemText>
+                <Typography>My Order</Typography>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} href="/dashboard/orders">
+              <ListItemIcon>{<ListAltIcon />}</ListItemIcon>
+              <ListItemText>
+                <Typography>Order</Typography>
               </ListItemText>
             </ListItemButton>
           </ListItem>

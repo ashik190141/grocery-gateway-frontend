@@ -50,14 +50,16 @@ const UpdateProduct = ({ params }: productId) => {
 
     const handleUpdateProduct = async(data: FormValues) => {
         // console.log(data);
-        try {
+      try {
+          setShow(true)
             const updateProductInfo = {
                 ...data,
                 id:product?.data?.id
             }
             const res = await updateProduct(updateProductInfo).unwrap();
             // console.log(res);
-            if (res.result) {
+        if (res.result) {
+              setShow(false)
               Swal.fire({
                 title: "Update Product Successfully",
                 confirmButtonText: "OK",
