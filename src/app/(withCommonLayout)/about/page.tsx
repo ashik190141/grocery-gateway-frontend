@@ -1,3 +1,5 @@
+"use client"
+
 import { FaCheckCircle } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";

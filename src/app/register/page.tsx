@@ -39,6 +39,9 @@ const RegisterPage = () => {
     return (
       <div
         className="hero min-h-screen font-family bg-slate-400"
+        style={{
+          backgroundImage: `url("https://media.istockphoto.com/id/1398434616/photo/grocery-online-shopping.jpg?s=2048x2048&w=is&k=20&c=fUx3FIFt96Wvm1DK4fKkby7MCYiZ5AhUVCa4rFw2URw=")`,
+        }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center">

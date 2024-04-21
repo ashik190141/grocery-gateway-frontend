@@ -7,6 +7,7 @@ import { CreateProduct } from '@/action/CreateProduct';
 import { useRouter } from "next/navigation";
 import LoadingPage from '../../loading';
 import Swal from 'sweetalert2';
+import { useCreateProductMutation } from '@/redux/api/productApi';
 
 export type FormValues = {
   name: string;
@@ -37,6 +38,8 @@ const AddProductPage = () => {
       });
   }, []);
 
+  const [createProduct] = useCreateProductMutation();
+
   const onSubmit = async (data: FormValues) => {
     setShow(true);
     const formData = new FormData();
@@ -58,7 +61,8 @@ const AddProductPage = () => {
                     // id: (products.length)+1
                 }
                 try {
-                  const res = await CreateProduct(productDetails);
+                  const res = await createProduct(productDetails).unwrap();
+                  // console.log(res);
                   if (res.result) {
                       Swal.fire({
                         title: "Add Your Product Successfully",

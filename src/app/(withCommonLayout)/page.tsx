@@ -3,6 +3,7 @@ import React from 'react';
 import Banner from '../../components/shared/Banner';
 import Trending from '../../components/HomePage/Trending/Trending';
 import TopCategory from '../../components/HomePage/TopCategory/TopCategory';
+import Specialty from '../../components/HomePage/Specialty/Specialty';
 
 
 const HomePage = () => {
@@ -10,6 +11,7 @@ const HomePage = () => {
         <div>
             <Banner></Banner>
             <Trending></Trending>
+            <Specialty></Specialty>
             <FlashSale></FlashSale>
             <TopCategory></TopCategory>
         </div>

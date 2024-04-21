@@ -46,7 +46,7 @@ const OrderPage = () => {
                   <p className="py-2">
                     Order Date: {dateFormatter(order?.createdAt)}
                   </p>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pb-7">
+                  <div className="max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-5 pb-7">
                     {order?.data?.map((data: any) => (
                       <Card sx={{ maxWidth: 345 }} key={data?.id}>
                         <CardMedia

@@ -24,11 +24,12 @@ export type FormValues = {
 
 const UpdateProduct = ({ params }: productId) => {
     const { data: product, isLoading } = useGetSingleProductQuery(params.productId);
-    const [name, setName] = useState(product?.data?.name||'');
-    const [price, setPrice] = useState(product?.data?.price||'');
-    const [description, setDescription] = useState(product?.data?.description||'');
-    const [rating, setRating] = useState(product?.data?.rating||'');
-    const [categoryValue, setCategoryValue] = useState(product?.data?.category||'');
+    console.log(product);
+    const [name, setName] = useState(product?.data?.name);
+    const [price, setPrice] = useState(product?.data?.price);
+    const [description, setDescription] = useState(product?.data?.description);
+    const [rating, setRating] = useState(product?.data?.rating);
+    const [categoryValue, setCategoryValue] = useState(product?.data?.category);
 
     const [category, setCategory] = useState([]);
     const [show, setShow] = useState(false);
@@ -53,7 +54,11 @@ const UpdateProduct = ({ params }: productId) => {
       try {
           setShow(true)
             const updateProductInfo = {
-                ...data,
+                name,
+                price,
+                rating,
+                categoryValue,
+                description,
                 id:product?.data?.id
             }
             const res = await updateProduct(updateProductInfo).unwrap();
@@ -84,102 +89,104 @@ const UpdateProduct = ({ params }: productId) => {
         <div className="hero min-h-screen">
           <div className="card w-[50%] shadow-xl bg-base-100">
             <h1 className="my-5 text-3xl">Update Product</h1>
-            <form
-              onSubmit={handleSubmit(handleUpdateProduct)}
-              className="card-body"
-            >
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Product Name</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={name}
-                  {...register("name")}
-                  placeholder="Product Name"
-                  className="input input-bordered"
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Product Category</span>
-                </label>
-                <select
-                  className="select p-2 border-2 border-black bg-transparent w-full"
-                  id="category"
-                  {...register("category", { required: true })}
-                  value={categoryValue}
-                  onChange={(e) => setCategoryValue(e.target.value)}
-                >
-                  {category?.map((category: { id: string; name: string }) => (
-                    <option key={category.id} value={category.name}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Product Price</span>
-                </label>
-                <input
-                  id="price"
-                  value={price}
-                  {...register("price")}
-                  type="number"
-                  onChange={(e) => setPrice(e.target.value)}
-                  placeholder="Price"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Product Ratings</span>
-                </label>
-                <input
-                  type="text"
-                  id="ratings"
-                  value={rating}
-                  {...register("rating")}
-                  onChange={(e) => setRating(e.target.value)}
-                  placeholder="Ratings"
-                  className="input input-bordered"
-                  max={5}
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Description</span>
-                </label>
-                <textarea
-                  id="description"
-                  {...register("description")}
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Description"
-                  className="textarea textarea-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control mt-6">
-                {!show ? (
+            {!isLoading && (
+              <form
+                onSubmit={handleSubmit(handleUpdateProduct)}
+                className="card-body"
+              >
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Product Name</span>
+                  </label>
                   <input
-                    type="submit"
-                    value="Submit"
+                    type="text"
+                    id="name"
+                    defaultValue={product?.data?.name}
+                    {...register("name")}
+                    placeholder="Product Name"
                     className="input input-bordered"
+                    onChange={(e) => setName(e.target.value)}
+                    required
                   />
-                ) : (
-                  <div>
-                    <LoadingPage></LoadingPage>
-                  </div>
-                )}
-              </div>
-            </form>
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Product Category</span>
+                  </label>
+                  <select
+                    className="select p-2 border-2 border-black bg-transparent w-full"
+                    id="category"
+                    {...register("category", { required: true })}
+                    defaultValue={product?.data?.category}
+                    onChange={(e) => setCategoryValue(e.target.value)}
+                  >
+                    {category?.map((category: { id: string; name: string }) => (
+                      <option key={category.id} value={category.name}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Product Price</span>
+                  </label>
+                  <input
+                    id="price"
+                    defaultValue={product?.data?.price}
+                    {...register("price")}
+                    type="number"
+                    onChange={(e) => setPrice(e.target.value)}
+                    placeholder="Price"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Product Ratings</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="ratings"
+                    defaultValue={product?.data?.rating}
+                    {...register("rating")}
+                    onChange={(e) => setRating(e.target.value)}
+                    placeholder="Ratings"
+                    className="input input-bordered"
+                    max={5}
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Description</span>
+                  </label>
+                  <textarea
+                    id="description"
+                    {...register("description")}
+                    defaultValue={product?.data?.description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Description"
+                    className="textarea textarea-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control mt-6">
+                  {!show ? (
+                    <input
+                      type="submit"
+                      value="Submit"
+                      className="input input-bordered"
+                    />
+                  ) : (
+                    <div>
+                      <LoadingPage></LoadingPage>
+                    </div>
+                  )}
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>

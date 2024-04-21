@@ -1,9 +1,5 @@
 "use client"
-
-import { loggedInUserInfo } from "@/util/localStorage";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-
 import React, { ReactNode } from "react";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -28,6 +24,8 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import GradingIcon from "@mui/icons-material/Grading";
 import ListAltIcon from "@mui/icons-material/ListAlt";
+import { getKeyFromLocalStorage, loggedInUserInfo } from "@/util/localStorage";
+import { useRouter } from "next/navigation";
 
 const drawerWidth = 240;
 
@@ -103,14 +101,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const DashBoardLayout = ({ children }: { children: ReactNode }) => {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const userInfo = loggedInUserInfo();
-    setUser(userInfo?.email);
-  }, [user]);
-
   const router = useRouter();
+  let key = getKeyFromLocalStorage('key');
+  if (!key) {
+    router.push("/login")
+  }
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -120,9 +115,12 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
     setOpen(false);
   };
 
-  if(user==null){
-      router.push("/login")
-  }
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userInfo = loggedInUserInfo();
+    setUser(userInfo?.role);
+  }, [setUser]);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -169,38 +167,38 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
         </List>
         <Divider />
         <List>
-          <ListItem disablePadding>
+          {user == 'admin' && <ListItem disablePadding>
             <ListItemButton component={Link} href="/dashboard/allProduct">
               <ListItemIcon>{<FormatAlignJustifyIcon />}</ListItemIcon>
               <ListItemText>
                 <Typography>All Product</Typography>
               </ListItemText>
             </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
+          </ListItem>}
+          {user == 'admin' && <ListItem disablePadding>
             <ListItemButton component={Link} href="/dashboard/addProduct">
               <ListItemIcon>{<PostAddIcon />}</ListItemIcon>
               <ListItemText>
                 <Typography>Add Product</Typography>
               </ListItemText>
             </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
+          </ListItem>}
+          {user == 'user' && <ListItem disablePadding>
             <ListItemButton component={Link} href="/dashboard/my-orders">
               <ListItemIcon>{<GradingIcon />}</ListItemIcon>
               <ListItemText>
                 <Typography>My Order</Typography>
               </ListItemText>
             </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
+          </ListItem>}
+          {user == 'admin' && <ListItem disablePadding>
             <ListItemButton component={Link} href="/dashboard/orders">
               <ListItemIcon>{<ListAltIcon />}</ListItemIcon>
               <ListItemText>
                 <Typography>Order</Typography>
               </ListItemText>
             </ListItemButton>
-          </ListItem>
+          </ListItem>}
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

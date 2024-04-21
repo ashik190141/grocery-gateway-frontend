@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { userLogin } from '@/action/userlogin';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
-import { setKeyToLocalStorage } from '@/util/localStorage';
+import { loggedInUserInfo, setKeyToLocalStorage } from '@/util/localStorage';
 
 const LoginPage = () => {
     const [show, setShow] = useState(false);
@@ -25,12 +25,16 @@ const LoginPage = () => {
             if(res.success){
                 setShow(false);
                 setKeyToLocalStorage(res?.token)
+                let userInfo = loggedInUserInfo();
                 Swal.fire({
                   title: "Logged in Successful",
                   confirmButtonText: "OK",
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    router.push('/dashboard/allProduct');
+                    if(userInfo.role == 'admin')
+                      router.push('/dashboard/allProduct');
+                    else
+                      router.push("/dashboard/my-orders")
                   }
                 });
             }
@@ -42,7 +46,9 @@ const LoginPage = () => {
       <div>
         <div
           className="hero min-h-screen font-family"
-          style={{ backgroundImage: `url(${img})` }}
+          style={{
+            backgroundImage: `url("https://media.istockphoto.com/id/1398434616/photo/grocery-online-shopping.jpg?s=2048x2048&w=is&k=20&c=fUx3FIFt96Wvm1DK4fKkby7MCYiZ5AhUVCa4rFw2URw=")`,
+          }}
         >
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center">
