@@ -10,11 +10,16 @@ https://grocery-store-backend-six.vercel.app/
 - Show any random Categories
 - Show Top Rated grocery products based on the ratings of your products
 - Implement filtering options based on rating, brand/category, and price range to streamline grocery products, enhancing user experience and satisfaction.
+- Admin and User activity
+- Add To Cart
+- Proceed Checkout
 
 ## Technology Used
 
 - Next
+- React
 - Typescript
+- Redux
 
 ## Getting Started
 
