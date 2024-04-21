@@ -11,7 +11,9 @@ interface productId {
 }
 
 export const generateStaticParams = async () => {
-  const res = await fetch(`http://localhost:5000/api/v1/product`);
+  const res = await fetch(
+    `https://grocery-store-backend-six.vercel.app/api/v1/product`
+  );
   const { data: products } = await res.json();
   return products.slice(0, 10).map((product: any) => ({
     productId: product._id,
@@ -20,20 +22,20 @@ export const generateStaticParams = async () => {
 
 const ProductDetailsPage = async ({ params }: productId) => {
   const res = await fetch(
-    `http://localhost:5000/api/v1/product/${params.productId}`
+    `https://grocery-store-backend-six.vercel.app/api/v1/product/${params.productId}`
   );
   const { data } = await res.json();
 
   const AddToCartOperation = dynamic(
     () => import("../../../../components/ui/AddToCartOperation"),
-    { ssr:false }
+    { ssr: false }
   );
 
   const ShowReview = dynamic(
     () => import("../../../../components/ui/ShowReview"),
-    { ssr:false }
+    { ssr: false }
   );
-  
+
   return (
     <div className="max-w-7xl mx-auto py-32">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-20">

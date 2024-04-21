@@ -1,8 +1,8 @@
 # Grocery Gateway
 
-
 ## Live URL
-https://grocery-store-frontend-two.vercel.app/
+
+https://grocery-store-backend-six.vercel.app/
 
 ## Features
 
@@ -22,7 +22,6 @@ https://grocery-store-frontend-two.vercel.app/
 
 Github Client: https://github.com/ashik190141/grocery-gateway-frontend
 Github Server: https://github.com/ashik190141/grocery-gateway-server
-
 
 ### Installation
 

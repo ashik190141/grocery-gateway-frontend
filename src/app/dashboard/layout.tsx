@@ -24,8 +24,9 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import GradingIcon from "@mui/icons-material/Grading";
 import ListAltIcon from "@mui/icons-material/ListAlt";
-import { getKeyFromLocalStorage, loggedInUserInfo } from "@/util/localStorage";
-import { useRouter } from "next/navigation";
+import { loggedInUserInfo } from "@/util/localStorage";
+// import { useRouter } from "next/navigation";
+import Provider from './Provider';
 
 const drawerWidth = 240;
 
@@ -101,11 +102,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const DashBoardLayout = ({ children }: { children: ReactNode }) => {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
-  const router = useRouter();
-  let key = getKeyFromLocalStorage('key');
-  if (!key) {
-    router.push("/login")
-  }
+  // const router = useRouter();
+  // let key = getKeyFromLocalStorage('key');
+  // if (!key) {
+  //   router.push("/login")
+  // }
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -123,89 +124,99 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
   }, [setUser]);
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Grocer Gateway
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
+    <Provider>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              Grocer Gateway
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "rtl" ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
+          </DrawerHeader>
+          <Divider />
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href="/">
+                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+                <ListItemText>
+                  <Typography>Home</Typography>
+                </ListItemText>
+              </ListItemButton>
+            </ListItem>
+          </List>
+          <Divider />
+          <List>
+            {user == "admin" && (
+              <ListItem disablePadding>
+                <ListItemButton component={Link} href="/dashboard/allProduct">
+                  <ListItemIcon>{<FormatAlignJustifyIcon />}</ListItemIcon>
+                  <ListItemText>
+                    <Typography>All Product</Typography>
+                  </ListItemText>
+                </ListItemButton>
+              </ListItem>
             )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton component={Link} href="/">
-              <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-              <ListItemText>
-                <Typography>Home</Typography>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          {user == 'admin' && <ListItem disablePadding>
-            <ListItemButton component={Link} href="/dashboard/allProduct">
-              <ListItemIcon>{<FormatAlignJustifyIcon />}</ListItemIcon>
-              <ListItemText>
-                <Typography>All Product</Typography>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>}
-          {user == 'admin' && <ListItem disablePadding>
-            <ListItemButton component={Link} href="/dashboard/addProduct">
-              <ListItemIcon>{<PostAddIcon />}</ListItemIcon>
-              <ListItemText>
-                <Typography>Add Product</Typography>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>}
-          {user == 'user' && <ListItem disablePadding>
-            <ListItemButton component={Link} href="/dashboard/my-orders">
-              <ListItemIcon>{<GradingIcon />}</ListItemIcon>
-              <ListItemText>
-                <Typography>My Order</Typography>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>}
-          {user == 'admin' && <ListItem disablePadding>
-            <ListItemButton component={Link} href="/dashboard/orders">
-              <ListItemIcon>{<ListAltIcon />}</ListItemIcon>
-              <ListItemText>
-                <Typography>Order</Typography>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>}
-        </List>
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        {children}
+            {user == "admin" && (
+              <ListItem disablePadding>
+                <ListItemButton component={Link} href="/dashboard/addProduct">
+                  <ListItemIcon>{<PostAddIcon />}</ListItemIcon>
+                  <ListItemText>
+                    <Typography>Add Product</Typography>
+                  </ListItemText>
+                </ListItemButton>
+              </ListItem>
+            )}
+            {user == "user" && (
+              <ListItem disablePadding>
+                <ListItemButton component={Link} href="/dashboard/my-orders">
+                  <ListItemIcon>{<GradingIcon />}</ListItemIcon>
+                  <ListItemText>
+                    <Typography>My Order</Typography>
+                  </ListItemText>
+                </ListItemButton>
+              </ListItem>
+            )}
+            {user == "admin" && (
+              <ListItem disablePadding>
+                <ListItemButton component={Link} href="/dashboard/orders">
+                  <ListItemIcon>{<ListAltIcon />}</ListItemIcon>
+                  <ListItemText>
+                    <Typography>Order</Typography>
+                  </ListItemText>
+                </ListItemButton>
+              </ListItem>
+            )}
+          </List>
+        </Drawer>
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
+          {children}
+        </Box>
       </Box>
-    </Box>
+    </Provider>
   );
 };
 

@@ -4,9 +4,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import LoadingPage from "../../loading";
 import Swal from "sweetalert2";
 import { useCreateProductMutation } from "@/redux/api/productApi";
+import LoadingPage from '@/app/loading';
 
 export type FormValues = {
   name: string;
@@ -19,7 +19,7 @@ export type FormValues = {
 const image_hosting_token = process.env.VITE_Image_Upload_token;
 // console.log(image_hosting_token);
 
-const AddProductPage = () => {
+const AddProduct = () => {
   const [category, setCategory] = useState([]);
   const [show, setShow] = useState(false);
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=d0a7e1f328b83330a0ea0321f368cb7f`;
@@ -187,4 +187,4 @@ const AddProductPage = () => {
   );
 };
 
-export default AddProductPage;
+export default AddProduct;

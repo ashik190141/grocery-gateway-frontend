@@ -46,7 +46,7 @@ const Specialty = () => {
                       Apple With Strawberry
                     </p>
                     <p className="">
-                      It's So teasty and Delicious for creating our coustomer.
+                      It is So teasty and Delicious for creating our coustomer.
                       So visit our restaurant{" "}
                     </p>
                   </div>
@@ -79,7 +79,7 @@ const Specialty = () => {
                       Pear With Cantaloupe
                     </p>
                     <p className="">
-                      It's So teasty and Delicious for creating our coustomer.
+                      It is So teasty and Delicious for creating our coustomer.
                       So visit our restaurant{" "}
                     </p>
                   </div>
@@ -114,7 +114,7 @@ const Specialty = () => {
                       Tomato With Blackberry
                     </p>
                     <p className="">
-                      It's So teasty and Delicious for creating our coustomer.
+                      It is So teasty and Delicious for creating our coustomer.
                       So visit our restaurant{" "}
                     </p>
                   </div>
@@ -147,7 +147,7 @@ const Specialty = () => {
                       Blueberry With Lemon
                     </p>
                     <p className="">
-                      It's So teasty and Delicious for creating our coustomer.
+                      It is So teasty and Delicious for creating our coustomer.
                       So visit our restaurant{" "}
                     </p>
                   </div>

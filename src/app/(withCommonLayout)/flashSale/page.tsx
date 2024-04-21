@@ -24,9 +24,12 @@ const renderer: CountdownRendererFn = ({
 };
 
 const FlashSalePage = async () => {
-  const res = await fetch(`http://localhost:5000/api/v1/flash-Sale`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://grocery-store-backend-six.vercel.app/api/v1/flash-Sale`,
+    {
+      cache: "no-store",
+    }
+  );
   const { data: products } = await res.json();
 
   const currentDate = new Date();

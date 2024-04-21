@@ -28,7 +28,7 @@ const AllProductHomePage = () => {
   }, [user]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/product`)
+    fetch(`https://grocery-store-backend-six.vercel.app/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -66,7 +66,7 @@ const AllProductHomePage = () => {
   };
 
   const handleCategory = (value: any) => {
-    let searchText = value.toLowerCase()
+    let searchText = value.toLowerCase();
     console.log(searchText);
     if (searchText == "all") {
       setRecords(products);
@@ -84,9 +84,9 @@ const AllProductHomePage = () => {
     }
   };
 
-  const handleAddToCart = async(id:Key) => {
-    const data = {id:id,email:user}
-    if(!user){
+  const handleAddToCart = async (id: Key) => {
+    const data = { id: id, email: user };
+    if (!user) {
       router.push("/login");
     } else {
       const res = await addToCart(data).unwrap();
@@ -94,7 +94,7 @@ const AllProductHomePage = () => {
         Swal.fire({
           title: "Cart Added Successfully",
           confirmButtonText: "OK",
-        })
+        });
       } else {
         Swal.fire({
           title: "Failed",
@@ -102,7 +102,7 @@ const AllProductHomePage = () => {
         });
       }
     }
-  }
+  };
 
   return (
     <div className="max-w-7xl mx-auto">

@@ -8,7 +8,7 @@ export const productApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["addToCart"],
+      invalidatesTags: ["addToCart","order"],
     }),
     getAllOrder: build.query({
       query: () => ({
