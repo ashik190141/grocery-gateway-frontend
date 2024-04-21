@@ -63,13 +63,13 @@ const TopCategory = () => {
       </Box>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Item>
               <div className="py-3 shadow-lg font-sans rounded-xl space-y-6 mx-auto bg-white">
                 <div className="flex justify-center w-full relative">
                   <div className="flex justify-between items-center left-4 right-10 top-8 absolute">
                     <div className="flex items-center"></div>
-                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-2xl font-medium px-3 py-1 rounded-xl z-10">
+                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-xl font-medium px-3 py-1 rounded-xl z-10">
                       {products[0]?.category}
                     </button>
                   </div>
@@ -85,7 +85,7 @@ const TopCategory = () => {
                       className="absolute inset-0 flex items-center justify-center opacity-0 
                         group-hover:opacity-70 transition-opacity duration-300 bg-white/70"
                     >
-                      <p className="text-black font-black text-2xl">
+                      <p className="text-black font-black text-3xl">
                         {products[0]?.name}
                         <br />$ {products[0]?.price}
                       </p>
@@ -95,13 +95,13 @@ const TopCategory = () => {
               </div>
             </Item>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Item>
               <div className="py-3 shadow-lg font-sans rounded-xl space-y-6 mx-auto bg-white">
                 <div className="flex justify-center w-full relative">
                   <div className="flex justify-between items-center left-4 right-10 top-8 absolute">
                     <div className="flex items-center"></div>
-                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-2xl font-medium px-3 py-1 rounded-xl z-10">
+                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-xl font-medium px-3 py-1 rounded-xl z-10">
                       {products[2]?.category}
                     </button>
                   </div>
@@ -127,13 +127,13 @@ const TopCategory = () => {
               </div>
             </Item>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Item>
               <div className="py-3 shadow-lg font-sans rounded-xl space-y-6 mx-auto bg-white">
                 <div className="flex justify-center w-full relative">
                   <div className="flex justify-between items-center left-4 right-8 top-5 absolute">
                     <div className="flex items-center"></div>
-                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-2xl font-medium px-3 py-1 rounded-xl z-10">
+                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-xl font-medium px-3 py-1 rounded-xl z-10">
                       {products[1]?.category}
                     </button>
                   </div>
@@ -159,13 +159,13 @@ const TopCategory = () => {
               </div>
             </Item>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Item>
               <div className="py-3 shadow-lg font-sans rounded-xl space-y-6 mx-auto bg-white">
                 <div className="flex justify-center w-full relative">
                   <div className="flex justify-between items-center left-4 right-8 top-5 absolute">
                     <div className="flex items-center"></div>
-                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-2xl font-medium px-3 py-1 rounded-xl z-10">
+                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-xl font-medium px-3 py-1 rounded-xl z-10">
                       {products[5]?.category}
                     </button>
                   </div>
@@ -191,13 +191,13 @@ const TopCategory = () => {
               </div>
             </Item>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Item>
               <div className="py-3 shadow-lg font-sans rounded-xl space-y-6 mx-auto bg-white">
                 <div className="flex justify-center w-full relative">
                   <div className="flex justify-between items-center left-4 right-8 top-5 absolute">
                     <div className="flex items-center"></div>
-                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-2xl font-medium px-3 py-1 rounded-xl z-10">
+                    <button className="bg-[#0095FF] hover:bg-[#0095FF]/90 duration-200 text-white text-xl font-medium px-3 py-1 rounded-xl z-10">
                       {products[4]?.category}
                     </button>
                   </div>

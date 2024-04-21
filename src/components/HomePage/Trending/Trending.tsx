@@ -64,7 +64,7 @@ const Trending = () => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           {products.map((product: Product, index: number) => (
-            <Grid item xs={4} key={index}>
+            <Grid item xs={12} md={4} key={index}>
               <Item>
                 <div className="py-3 shadow-lg font-sans rounded-xl space-y-6 mx-auto bg-white">
                   <div className="flex justify-center w-full relative">
