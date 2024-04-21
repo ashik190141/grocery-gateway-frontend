@@ -85,7 +85,7 @@ const TopCategory = () => {
                       className="absolute inset-0 flex items-center justify-center opacity-0 
                         group-hover:opacity-70 transition-opacity duration-300 bg-white/70"
                     >
-                      <p className="text-black font-black text-3xl">
+                      <p className="text-black font-black text-2xl">
                         {products[0]?.name}
                         <br />$ {products[0]?.price}
                       </p>
