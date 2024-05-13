@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co/8rF1ZXt/Screenshot-from-2024-05-05-01-26-45.png" />
+
 # Grocery Gateway
 
 ## Live URL
@@ -20,6 +22,7 @@ https://grocery-store-backend-six.vercel.app/
 - React
 - Typescript
 - Redux
+- Mongoose
 
 ## Getting Started
 
