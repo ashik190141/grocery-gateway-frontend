@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co/8rF1ZXt/Screenshot-from-2024-05-05-01-26-45.png" />
+
 # Grocery Gateway
 
 ## Live URL
@@ -6,13 +8,13 @@ https://grocery-store-backend-six.vercel.app/
 
 ## Features
 
-- Display top 4-6 flash sale grocery products, sorting based on product creation time
-- Show any random Categories
-- Show Top Rated grocery products based on the ratings of your products
-- Implement filtering options based on rating, brand/category, and price range to streamline grocery products, enhancing user experience and satisfaction.
-- Admin and User activity
-- Add To Cart
-- Proceed Checkout
+ - The Groceries Marketplace project aims to enhance user engagement and functionality within the groceries domain by incorporating essential features and UI/UX improvements.
+ - Admin can add grocery products through a dedicated route, ensuring seamless integration of new products into the platform.
+ - Clicking the Add To Cart Button will add the product to the Cart and There will be a Cart Icon in the NavBar which will have a badge showing the number of unique products added to the cart.
+ - Any Authorized User can provide a review for the product on the product detail page below the details of the product. It is not necessary to buy the product or have it delivered.
+ - Calculate the Total price with product Quantity and Delivery Charge of 15 Taka Show the “Proceed Checkout” Button below the Total Price Clicking the the Proceed Checkout Button will create an order with pending status After the Order is created, show a Toast and Clear the Cart.
+ - Admin can handle order status transitions from Pending to Delivered, empowering administrators to manage orders effectively within the grocery marketplace.
+ - Allow users to view their own delivered and pending orders. Users can provide ratings for the delivered products once
 
 ## Technology Used
 
@@ -20,16 +22,25 @@ https://grocery-store-backend-six.vercel.app/
 - React
 - Typescript
 - Redux
+- Mongoose
 
 ## Getting Started
 
 ### Repo
 
-Github Client: https://github.com/ashik190141/grocery-gateway-frontend
-Github Server: https://github.com/ashik190141/grocery-gateway-server
+ - Github Client: https://github.com/ashik190141/grocery-gateway-frontend
+ - Github Server: https://github.com/ashik190141/grocery-gateway-server
 
 ### Installation
 
-1. if locally run the file at first run the command npm i and then rpm run dev.
-2. Go to Dashboard and Added Product
-3. Show the top rated product
+### Navigate to the backend directory
+
+```shell
+cd directory name
+```
+
+### Install backend dependencies
+
+```shell
+npm install
+```
