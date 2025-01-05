@@ -9,6 +9,7 @@ import img1 from '../../assets/156-1563403_pomegranate-grocery-store-pomegranate
 import { deleteKeyFromLocalStorage } from '../../util/localStorage';
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useGetAllCartsQuery } from "@/redux/api/cartApi";
+import Cookies from "js-cookie";
 
 
 const Navbar = () => {
@@ -25,6 +26,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     setUserRole(null);
+    Cookies.remove("accessToken");
     deleteKeyFromLocalStorage();
   }
 

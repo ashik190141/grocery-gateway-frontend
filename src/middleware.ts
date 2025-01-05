@@ -1,10 +1,13 @@
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { getKeyFromLocalStorage } from "./util/localStorage";
 
 export function middleware(request: NextRequest): NextResponse {
+  // console.log('req url: ',request.url);
+
   const { pathname } = request.nextUrl; // Get the requested path
   // console.log('pathname ',pathname)
-  const key = getKeyFromLocalStorage("key") as string;
+  const key = cookies().get("accessToken")?.value;
+  // console.log('key',key);
 
   // Define protected routes
   const protectedRoutes: string[] = [
@@ -15,7 +18,11 @@ export function middleware(request: NextRequest): NextResponse {
   // Check if the route is protected and the user is not authenticated
   if (protectedRoutes.some((route) => pathname.startsWith(route)) && !key) {
     // Redirect unauthenticated users to the login page
-    return NextResponse.redirect(new URL("/login", request.url));
+    // return NextResponse.redirect(new URL("/login", request.url));
+
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("redirect", request.nextUrl.pathname);
+    return NextResponse.redirect(loginUrl);
   }
 
   // Allow the request to continue if authenticated

@@ -33,7 +33,7 @@ const TopCategory = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://grocery-store-backend-six.vercel.app/api/v1/topCategory`,
+          `http://localhost:5000/api/v1/topCategory`,
           {
             next: {
               revalidate: 30,

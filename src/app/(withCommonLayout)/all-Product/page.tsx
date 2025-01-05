@@ -28,7 +28,7 @@ const AllProductHomePage = () => {
   }, [user]);
 
   useEffect(() => {
-    fetch(`https://grocery-store-backend-six.vercel.app/api/v1/product`)
+    fetch(`http://localhost:5000/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -194,7 +194,7 @@ const AllProductHomePage = () => {
                     <Link href={`/all-Product/${product._id}`}>
                       <button
                         disabled={!user}
-                        className="bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900"
+                        className="bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900 cursor-pointer"
                       >
                         Details
                       </button>

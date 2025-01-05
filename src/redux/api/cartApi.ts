@@ -5,7 +5,7 @@ export const productApi = baseApi.injectEndpoints({
     addToCartProduct: build.mutation({
       query: (data) => ({
         url: `/addToCart`,
-        method: "POST",
+        method: "PUT",
         body: data,
       }),
       invalidatesTags: ["addToCart"],
@@ -17,10 +17,19 @@ export const productApi = baseApi.injectEndpoints({
       }),
       providesTags: ["addToCart"],
     }),
+    updateCarts: build.mutation({
+      query: (data) => ({
+        url: `/addToCart/${data.id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["addToCart"],
+    }),
   }),
 });
 
 export const {
     useAddToCartProductMutation,
-    useGetAllCartsQuery
+  useGetAllCartsQuery,
+    useUpdateCartsMutation
 } = productApi;

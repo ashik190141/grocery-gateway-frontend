@@ -10,14 +10,11 @@ const FlashSale = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(
-          `https://grocery-store-backend-six.vercel.app/api/v1/flash-Sale`,
-          {
-            next: {
-              revalidate: 30,
-            },
-          }
-        );
+        const res = await fetch(`http://localhost:5000/api/v1/flash-Sale`, {
+          next: {
+            revalidate: 30,
+          },
+        });
         const { data } = await res.json();
         setProducts(data);
       } catch (error) {

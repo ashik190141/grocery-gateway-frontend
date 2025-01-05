@@ -1,11 +1,12 @@
 "use client";
 
-import { useGetAllCartsQuery } from "@/redux/api/cartApi";
+import { useGetAllCartsQuery, useUpdateCartsMutation } from "@/redux/api/cartApi";
 import { loggedInUserInfo } from "@/util/localStorage";
 import React from "react";
 import { useEffect, useState } from "react";
 import Divider from "@mui/material/Divider";
-
+import { FaMinus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -51,9 +52,10 @@ const CheckoutPage = () => {
     image: string,
     name: string,
     noOfProduct: number,
-    price: number
+    price: number,
+    id: string,
   ) {
-    return { image, name, noOfProduct, price };
+    return { image, name, noOfProduct, price, id };
   }
 
   const rows = carts?.data?.map(
@@ -62,7 +64,8 @@ const CheckoutPage = () => {
       name: string;
       noOfProduct: number;
       price: number;
-    }) => createData(cart?.image, cart?.name, cart?.noOfProduct, cart?.price)
+      id: string,
+    }) => createData(cart?.image, cart?.name, cart?.noOfProduct, cart?.price, cart?.id)
   );
   // console.log(rows)
 
@@ -105,12 +108,34 @@ const CheckoutPage = () => {
     }
   };
 
+  const [updateCart] = useUpdateCartsMutation();
+
+  const handleUpdateCart = async(id:string, inc:number) => {
+    const updateProductInfo = {
+      email: user,
+      id: id,
+      inc: inc
+    };
+    const res = await updateCart(updateProductInfo).unwrap();
+    if (res.result) {
+      Swal.fire({
+        title: inc < 1 ? 'Remove into Cart' : 'Added into Cart',
+        confirmButtonText: "OK",
+      });
+    } else {
+      Swal.fire({
+        title: "Failed",
+        confirmButtonText: "Ok",
+      });
+    }
+  }
+
   return (
     <div className="max-w-7xl mx-auto pt-52">
-      <div className="mb-10">
+      <div className="mb-10 flex justify-between">
         <p className="text-2xl text-orange-600">Grocer Gateway</p>
         <p className="text-2xl">
-          Total Cost: {calculateTotalPrice(carts?.data) ?? 0}
+          Total Product Price: {calculateTotalPrice(carts?.data) ?? 0}
         </p>
       </div>
       <TableContainer component={Paper}>
@@ -126,6 +151,7 @@ const CheckoutPage = () => {
           <TableBody>
             {rows?.map(
               (row: {
+                id: string;
                 image: string;
                 name: string;
                 noOfProduct: number;
@@ -140,12 +166,32 @@ const CheckoutPage = () => {
                       height={70}
                     />
                   </StyledTableCell>
-                  <StyledTableCell align="center">{row?.name}</StyledTableCell>
                   <StyledTableCell align="center">
-                    {row?.noOfProduct}
+                    <span className="text-[18px]">{row?.name}</span>
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row?.price * row?.noOfProduct}
+                    <div>
+                      <button
+                        onClick={() => handleUpdateCart(row.id, -1)}
+                        className="px-2 py-1 border border-black border-dashed rounded-md"
+                      >
+                        <FaMinus />
+                      </button>{" "}
+                      <span className="mx-5 text-[18px]">
+                        {row?.noOfProduct}{" "}
+                      </span>
+                      <button
+                        onClick={() => handleUpdateCart(row.id, 1)}
+                        className="px-2 py-1 border border-black border-dashed rounded-md"
+                      >
+                        <FaPlus />
+                      </button>
+                    </div>
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    <span className="text-[18px]">
+                      {row?.price * row?.noOfProduct}
+                    </span>
                   </StyledTableCell>
                 </StyledTableRow>
               )
@@ -156,23 +202,25 @@ const CheckoutPage = () => {
       <div className="flex justify-end py-3 text-blue-700">
         * Cash On Delivery
       </div>
-
-      <div className="flex flex-col py-10">
-        <div className="flex justify-end py-1 text-xl">
+      <Divider className="bg-black mt-5 mb-5" />
+      <div className="flex flex-col">
+        {/* <div className="flex justify-end py-1 text-xl">
           Product Price: {calculateTotalPrice(carts?.data)}
-        </div>
+        </div> */}
         <div className="flex justify-end py-1 text-xl">Delivery Charge: 15</div>
-        <Divider />
-        <div className="flex justify-end py-3 text-xl">
-          Total Price: {calculateTotalPrice(carts?.data) + 15}
-        </div>
-        <div className="flex justify-end">
-          <button
-            onClick={handleCheckout}
-            className="btn btn-warning uppercase"
-          >
-            Proceed Checkout
-          </button>
+        <Divider className="bg-black mt-5" />
+        <div className="flex justify-between mt-10">
+          <div className="flex justify-end py-3 text-xl">
+            Total Cost: {calculateTotalPrice(carts?.data) + 15}
+          </div>
+          <div className="flex justify-end">
+            <button
+              onClick={handleCheckout}
+              className="btn btn-warning uppercase"
+            >
+              Proceed Checkout
+            </button>
+          </div>
         </div>
       </div>
     </div>

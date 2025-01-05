@@ -4,8 +4,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://grocery-store-backend-six.vercel.app/api/v1",
+    baseUrl: "http://localhost:5000/api/v1",
   }),
   endpoints: () => ({}),
   tagTypes: ["products", "addToCart", "review", "order"],
 });
+
+// http://localhost:5000
