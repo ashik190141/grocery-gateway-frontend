@@ -12,7 +12,7 @@ interface productId {
 
 export const generateStaticParams = async () => {
   const res = await fetch(
-    `http://localhost:5000/api/v1/product`
+    `https://grocery-store-backend-six.vercel.app/api/v1/product`
   );
   const { data: products } = await res.json();
   return products.slice(0, 10).map((product: any) => ({
@@ -22,7 +22,7 @@ export const generateStaticParams = async () => {
 
 const ProductDetailsPage = async ({ params }: productId) => {
   const res = await fetch(
-    `http://localhost:5000/api/v1/product/${params.productId}`
+    `https://grocery-store-backend-six.vercel.app/api/v1/product/${params.productId}`
   );
   const { data } = await res.json();
 

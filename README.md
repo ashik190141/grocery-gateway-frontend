@@ -4,7 +4,7 @@
 
 ## Live URL
 
-http://localhost:5000/
+https://grocery-store-frontend-two.vercel.app
 
 ## Features
 
