@@ -10,6 +10,7 @@ import { deleteKeyFromLocalStorage } from '../../util/localStorage';
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useGetAllCartsQuery } from "@/redux/api/cartApi";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 
 const Navbar = () => {
@@ -17,6 +18,7 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
   const { data: carts, isLoading } = useGetAllCartsQuery(user);
   // console.log(carts);
+  const router = useRouter();
   
   useEffect(() => {
     const userInfo = loggedInUserInfo();
@@ -28,6 +30,7 @@ const Navbar = () => {
     setUserRole(null);
     Cookies.remove("accessToken");
     deleteKeyFromLocalStorage();
+    router.push('/');
   }
 
   const navOptions = (
