@@ -53,7 +53,7 @@ const CheckoutPage = () => {
     name: string,
     noOfProduct: number,
     price: number,
-    id: string,
+    id: string
   ) {
     return { image, name, noOfProduct, price, id };
   }
@@ -64,10 +64,17 @@ const CheckoutPage = () => {
       name: string;
       noOfProduct: number;
       price: number;
-      id: string,
-    }) => createData(cart?.image, cart?.name, cart?.noOfProduct, cart?.price, cart?.id)
+      id: string;
+    }) =>
+      createData(
+        cart?.image,
+        cart?.name,
+        cart?.noOfProduct,
+        cart?.price,
+        cart?.id
+      )
   );
-  // console.log(rows)
+  console.log(carts?.data)
 
   useEffect(() => {
     const userInfo = loggedInUserInfo();
@@ -89,7 +96,10 @@ const CheckoutPage = () => {
       router.push("/login");
     } else {
       const orderData = {
-        data: carts?.data,
+        data: carts?.data?.map((item: { price: number; noOfProduct: number }) => ({
+          ...item,
+          price: (item.price * item.noOfProduct) + 15,
+        })),
         email: user,
         totalPrice: totalPrice,
       };
@@ -110,16 +120,16 @@ const CheckoutPage = () => {
 
   const [updateCart] = useUpdateCartsMutation();
 
-  const handleUpdateCart = async(id:string, inc:number) => {
+  const handleUpdateCart = async (id: string, inc: number) => {
     const updateProductInfo = {
       email: user,
       id: id,
-      inc: inc
+      inc: inc,
     };
     const res = await updateCart(updateProductInfo).unwrap();
     if (res.result) {
       Swal.fire({
-        title: inc < 1 ? 'Remove into Cart' : 'Added into Cart',
+        title: inc < 1 ? "Remove into Cart" : "Added into Cart",
         confirmButtonText: "OK",
       });
     } else {
@@ -128,7 +138,7 @@ const CheckoutPage = () => {
         confirmButtonText: "Ok",
       });
     }
-  }
+  };
 
   return (
     <div className="max-w-7xl mx-auto pt-52">

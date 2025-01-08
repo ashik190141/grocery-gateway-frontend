@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 const Navbar = () => {
   const [userRole, setUserRole] = useState(null);
   const [user, setUser] = useState(null);
-  const { data: carts, isLoading } = useGetAllCartsQuery(user);
+  const { data: carts } = useGetAllCartsQuery(user);
   // console.log(carts);
   const router = useRouter();
   

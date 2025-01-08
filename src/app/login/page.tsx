@@ -11,6 +11,7 @@ import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const [show, setShow] = useState(false);
+  const [userRole, setUserRole] = useState(null);
 
   const {
     register,
@@ -21,7 +22,7 @@ const LoginPage = () => {
   const router = useRouter();
 
   const searchParams = useSearchParams();
-  const redirectUrl = searchParams.get("redirect") || "/";
+  // const redirectUrl = searchParams.get("redirect") || "/";
 
   const handleLogin = async (data: FieldValues) => {
     setShow(true);
@@ -31,14 +32,20 @@ const LoginPage = () => {
       if (res.success) {
         setShow(false);
         setKeyToLocalStorage(res?.token);
-        // let userInfo = loggedInUserInfo();
-        Cookies.set("accessToken", res?.token);
+        let userInfo = loggedInUserInfo();
+        setUserRole(userInfo?.role);
+        Cookies.set("accessToken", res?.token, {
+          expires: 7, secure:false
+        });
         Swal.fire({
           title: "Logged in Successful",
           confirmButtonText: "OK",
         }).then((result) => {
           if (result.isConfirmed) {
-            router.push(redirectUrl);
+            userRole === "admin"
+              ? router.push("/dashboard")
+              : router.push("/dashboard");
+            
           }
         });
       } else {
@@ -59,6 +66,13 @@ const LoginPage = () => {
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
+        <div className="bg-blue-500 fixed z-50 top-10 text-[20px] rounded-md px-5 py-1">
+          <p>Admin: ahsanmahmudashik@gmail.com</p>
+          <p>Password: 123456</p>
+          <br />
+          <p>User: ashik41@gmail.com</p>
+          <p>Password: 123456</p>
+        </div>
         <div className="hero-content text-center">
           <div className="w-auto md:w-[400px] lg:w-[500px]">
             <div className="card flex-shrink-0 w-full shadow-2xl bg-white">

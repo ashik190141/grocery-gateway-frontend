@@ -6,11 +6,12 @@ import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
-import { setKeyToLocalStorage } from "@/util/localStorage";
+import { loggedInUserInfo, setKeyToLocalStorage } from "@/util/localStorage";
 import Cookies from "js-cookie";
 
 const RegisterPage = () => {
   const [show, setShow] = useState(false);
+  const [userRole, setUserRole] = useState(null);
   const {
     register,
     handleSubmit,
@@ -26,8 +27,12 @@ const RegisterPage = () => {
       if (res.result) {
         setShow(false);
         setKeyToLocalStorage(res?.token);
-        // let userInfo = loggedInUserInfo();
-        Cookies.set("accessToken", res?.token);
+        let userInfo = loggedInUserInfo();
+        setUserRole(userInfo?.role);
+        Cookies.set("accessToken", res?.token, {
+          expires: 7,
+          secure: false
+        });
         Swal.fire({
           title: "Registration Successful",
           confirmButtonText: "OK",

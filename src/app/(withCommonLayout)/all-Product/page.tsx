@@ -28,7 +28,7 @@ const AllProductHomePage = () => {
   }, [user]);
 
   useEffect(() => {
-    fetch(`https://grocery-store-backend-six.vercel.app/api/v1/product`)
+    fetch(`http://localhost:5000/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

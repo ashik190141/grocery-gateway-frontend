@@ -25,6 +25,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import GradingIcon from "@mui/icons-material/Grading";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import { loggedInUserInfo } from "@/util/localStorage";
+import DashboardIcon from '@mui/icons-material/Dashboard';
 // import { useRouter } from "next/navigation";
 import Provider from './Provider';
 
@@ -169,12 +170,20 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
           </List>
           <Divider />
           <List>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href="/dashboard">
+                <ListItemIcon>{<DashboardIcon />}</ListItemIcon>
+                <ListItemText>
+                  <Typography>Dashboard</Typography>
+                </ListItemText>
+              </ListItemButton>
+            </ListItem>
             {user == "admin" && (
               <ListItem disablePadding>
                 <ListItemButton component={Link} href="/dashboard/allProduct">
                   <ListItemIcon>{<FormatAlignJustifyIcon />}</ListItemIcon>
                   <ListItemText>
-                    <Typography>All Product</Typography>
+                    <Typography>Products</Typography>
                   </ListItemText>
                 </ListItemButton>
               </ListItem>
@@ -184,7 +193,7 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
                 <ListItemButton component={Link} href="/dashboard/addProduct">
                   <ListItemIcon>{<PostAddIcon />}</ListItemIcon>
                   <ListItemText>
-                    <Typography>Add Product</Typography>
+                    <Typography>Create Product</Typography>
                   </ListItemText>
                 </ListItemButton>
               </ListItem>

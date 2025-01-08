@@ -80,6 +80,7 @@ const OrderPage = () => {
                       </Card>
                     ))}
                   </div>
+                  <p>Total Price: {order?.totalPrice}</p>
                 </div>
               ))}
             </div>
