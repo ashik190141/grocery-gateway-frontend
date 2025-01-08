@@ -24,10 +24,13 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import GradingIcon from "@mui/icons-material/Grading";
 import ListAltIcon from "@mui/icons-material/ListAlt";
-import { loggedInUserInfo } from "@/util/localStorage";
+import { deleteKeyFromLocalStorage, loggedInUserInfo } from "@/util/localStorage";
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import LogoutIcon from "@mui/icons-material/Logout";
 // import { useRouter } from "next/navigation";
 import Provider from './Provider';
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const drawerWidth = 240;
 
@@ -109,6 +112,8 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
   //   router.push("/login")
   // }
 
+  const router = useRouter();
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -123,6 +128,13 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
     const userInfo = loggedInUserInfo();
     setUser(userInfo?.role);
   }, [setUser]);
+
+  const handleLogOut = () => {
+    setUser(null);
+    Cookies.remove("accessToken");
+    deleteKeyFromLocalStorage();
+    router.push("/");
+  };
 
   return (
     <Provider>
@@ -218,6 +230,14 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
                 </ListItemButton>
               </ListItem>
             )}
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleLogOut}>
+                <ListItemIcon>{<LogoutIcon />}</ListItemIcon>
+                <ListItemText>
+                  <Typography>Logout</Typography>
+                </ListItemText>
+              </ListItemButton>
+            </ListItem>
           </List>
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
