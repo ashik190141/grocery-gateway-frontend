@@ -16,13 +16,13 @@ export type FormValues = {
   rating: Number;
   category: string;
 };
-const image_hosting_token = process.env.VITE_Image_Upload_token;
+const image_hosting_token = process.env.NEXT_PUBLIC_VITE_Image_Upload_token;
 // console.log(image_hosting_token);
 
 const AddProductPage = () => {
   const [category, setCategory] = useState([]);
   const [show, setShow] = useState(false);
-  const imageHostingUrl = `https://api.imgbb.com/1/upload?key=d0a7e1f328b83330a0ea0321f368cb7f`;
+  const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
   const { register, handleSubmit } = useForm<FormValues>();
 
   const router = useRouter();

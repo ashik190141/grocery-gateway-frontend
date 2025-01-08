@@ -6,8 +6,9 @@ export function middleware(request: NextRequest): NextResponse {
 
   const { pathname } = request.nextUrl; // Get the requested path
   // console.log('pathname ',pathname)
-  const key = cookies().get("accessToken")?.value;
-  console.log('key',key);
+  // const key = cookies().get("accessToken")?.value;
+  const token = request.cookies.get("accessToken")?.value;
+  // console.log('key',key);
 
   // Define protected routes
   const protectedRoutes: string[] = [
@@ -16,7 +17,7 @@ export function middleware(request: NextRequest): NextResponse {
   ];
 
   // Check if the route is protected and the user is not authenticated
-  if (protectedRoutes.some((route) => pathname.startsWith(route)) && !key) {
+  if (protectedRoutes.some((route) => pathname.startsWith(route)) && !token) {
     // Redirect unauthenticated users to the login page
     // return NextResponse.redirect(new URL("/login", request.url));
 
@@ -31,5 +32,5 @@ export function middleware(request: NextRequest): NextResponse {
 
 // Apply middleware to specific routes
 export const config = {
-  matcher: ["/dashboard", "/all-Product/:path*"], // Routes to protect
+  matcher: ["/dashboard/:path*", "/all-Product/:path*"], // Routes to protect
 };
