@@ -24,6 +24,7 @@ ChartJS.register(
   CategoryScale,
   LinearScale
 );
+export const revalidate = 0;
 
 const DashboardPage = () => {
   const [userRole, setUserRole] = useState(null);
@@ -114,7 +115,7 @@ const DashboardPage = () => {
               </div>
               <div>
                 <p className="text-gray-600 text-sm font-bold">Name</p>
-                <p className="text-gray-800">{userInfo?.name}</p>
+                <p className="text-gray-800 w-fit">{userInfo?.name}</p>
               </div>
             </div>
 

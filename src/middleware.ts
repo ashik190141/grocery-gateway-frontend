@@ -8,7 +8,7 @@ export function middleware(request: NextRequest): NextResponse {
   // console.log('pathname ',pathname)
   // const key = cookies().get("accessToken")?.value;
   const token = request.cookies.get("accessToken")?.value;
-  // console.log('key',key);
+  console.log("key", token);
 
   // Define protected routes
   const protectedRoutes: string[] = [

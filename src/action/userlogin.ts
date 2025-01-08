@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { FieldValues } from "react-hook-form";
 
 export const userLogin = async (data: FieldValues) => {
@@ -15,6 +16,7 @@ export const userLogin = async (data: FieldValues) => {
       cache: "no-store",
     }
   );
+  revalidatePath("/dashboard");
   const userInfo = await res.json();
   return userInfo;
 };
