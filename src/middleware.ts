@@ -7,7 +7,7 @@ export function middleware(request: NextRequest): NextResponse {
   const { pathname } = request.nextUrl; // Get the requested path
   // console.log('pathname ',pathname)
   const key = cookies().get("accessToken")?.value;
-  // console.log('key',key);
+  console.log('key',key);
 
   // Define protected routes
   const protectedRoutes: string[] = [
@@ -31,5 +31,5 @@ export function middleware(request: NextRequest): NextResponse {
 
 // Apply middleware to specific routes
 export const config = {
-  matcher: ["/dashboard/:path*", "/all-Product/:path*"], // Routes to protect
+  matcher: ["/dashboard", "/all-Product/:path*"], // Routes to protect
 };

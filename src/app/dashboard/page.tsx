@@ -33,7 +33,7 @@ const DashboardPage = () => {
     const userInfo = loggedInUserInfo();
     setUserRole(userInfo?.role);
     setUser(userInfo?.email);
-  }, [user]);
+  }, []);
 
   const { data: userInfo, isLoading } = useGetUserInfoQuery(
     userRole && user ? { userRole, user } : skipToken
